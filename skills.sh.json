@@ -1,0 +1,8 @@
+{
+  "notGrouped": "bottom",
+  "groupings": [{
+    "title": "Armor",
+    "description": "The five things that actually kill agent sessions in 2026.",
+    "skills": ["skill-scan", "shell-guard", "click-proof", "context-diet", "bill-cap"]
+  }]
+}
