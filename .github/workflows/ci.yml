@@ -1,0 +1,28 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  scanners:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: examples must fail
+        run: |
+          set +e
+          node skills/skill-scan/scripts/scan.mjs examples/skill-scan/bad.md; test $? -eq 1
+          node skills/shell-guard/scripts/scan.mjs examples/shell-guard/bad.sh; test $? -eq 1
+          node skills/click-proof/scripts/scan.mjs examples/click-proof/fake.json; test $? -eq 1
+          node skills/context-diet/scripts/scan.mjs examples/context-diet/glutton.md; test $? -eq 1
+          node skills/bill-cap/scripts/scan.mjs examples/bill-cap/runaway.json; test $? -eq 1
+      - name: examples must pass
+        run: |
+          node skills/skill-scan/scripts/scan.mjs examples/skill-scan/ok.md
+          node skills/shell-guard/scripts/scan.mjs examples/shell-guard/ok.sh
+          node skills/click-proof/scripts/scan.mjs examples/click-proof/ok.json
+          node skills/context-diet/scripts/scan.mjs examples/context-diet/ok.md
+          node skills/bill-cap/scripts/scan.mjs examples/bill-cap/ok.json
+      - name: SKILL.md present
+        run: |
+          for s in skill-scan shell-guard click-proof context-diet bill-cap; do test -f skills/$s/SKILL.md; done

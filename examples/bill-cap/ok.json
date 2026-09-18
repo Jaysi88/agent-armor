@@ -1,0 +1,6 @@
+{
+  "maxCalls": 20,
+  "maxUsd": 2,
+  "stopPhrase": "STOP SPEND",
+  "callsMade": 3
+}
