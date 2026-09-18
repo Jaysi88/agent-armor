@@ -11,6 +11,7 @@ const RULES = [
   { id: "curl-sh", re: /curl[^\n]{0,80}\|\s*(?:ba)?sh|wget[^\n]{0,80}\|\s*(?:ba)?sh/i },
   { id: "env-exfil", re: /process\.env|\$[A-Z_]*(?:API_KEY|TOKEN|SECRET|PASSWORD)|exfiltrat/i },
   { id: "base64-blob", re: /atob\s*\(|Buffer\.from\([^)]*base64|base64,/i },
+  { id: "phone-home", re: /phones? home|sse:\/\/|mcp\.[^\s]+\/sse|remote[ -]?mcp|ngrok|webhook.*http/i },
   { id: "hidden-url", re: /https?:\/\/(?:[^\s]*\.(?:ngrok|trycloudflare|duckdns)|[0-9]{1,3}(?:\.[0-9]{1,3}){3})/i },
 ];
 

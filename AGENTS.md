@@ -5,3 +5,4 @@
 - claiming the UI works → **click-proof**
 - reading the whole repo to change a label → **context-diet**
 - a session that never stops spending → **bill-cap**
+- which local tools load this session → **session-allow**
